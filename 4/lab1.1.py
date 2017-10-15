@@ -11,14 +11,14 @@ class Library():
 
     def give(self):
         for i in self.Library__shelf:
-            self.Library__shelf[i].append(self.Library__shelf[i][-1] - 1)
-        self.history()
+            self.Library__shelf[i] = self.Library__shelf[i] - 1
+        self.currShelf()
     def take(self):
         for i in self.Library__shelf:
-            self.Library__shelf[i].append(self.Library__shelf[i][-1] + 1)
-        self.history()
+            self.Library__shelf[i] = self.Library__shelf[i] + 1
+        self.currShelf()
     def currShelf(self):
-        print (" ".join(['{0} {1}'.format(k, self.Library__shelf[k][-1]) for k in sorted(self.Library__shelf)]))
+        print (" ".join(['{0} {1}'.format(k, self.Library__shelf[k]) for k in sorted(self.Library__shelf)]))
     def history(self):
         print (" ".join(['{0} {1}'.format(k, " ".join(str(x) for x in self.Library__shelf[k])) for k  in sorted(self.Library__shelf)]))
 
@@ -30,7 +30,7 @@ dictData = {}
 for (i, v) in enumerate(splited):
     if (i % 2 == 0):
         #print (int(splited[i + 1]))
-        dictData[splited[i]] = [int(splited[i + 1])]
+        dictData[splited[i]] = int(splited[i + 1])
         
 #books = collections.OrderedDict(alist)
 
