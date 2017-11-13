@@ -3,25 +3,20 @@ import urllib.request
 
 from urllib.parse import urlparse
 url = "http://en.ifmo.ru/en/contacts/Contacts.htm" #str(input())
-s = "w2kf94dw wdwdw"
-i =2
-print (s[i:])
 url_res = tuple(urlparse(url))
 print (url_res)
 
 url_file = urllib.request.urlopen(url)
 html_file = url_file.read().decode('utf-8')
-#html_file = "<title><h1>wefewfwef</h1><h1><a>qwfef</a></h1> </title>"
 start = 0
 index = html_file.find('<h1>', start)
-data = ""
+data = []
 while index != -1:
     close = html_file.find('</h1>', index)
-    data += html_file[index+4:close]
+    data.append(html_file[index+4:close])
     start = close
     index = html_file.find('<h1>', start)
-print (data)
-#print (html_file.find('<h1>'))
+print (' '.join(data))
 
 from html.parser import HTMLParser
 
